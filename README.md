@@ -1,2 +1,2 @@
-# rhce-notes
-Notes, Scripts, Configs for RHCE Prep
+# rhce-prep
+Notes, Scripts, Configs for RHCE
