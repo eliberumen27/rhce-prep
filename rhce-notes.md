@@ -130,17 +130,35 @@ ansible-playbook --vault-password-file=/path/to/vaultpw lab5.yml
 
 ---
 
-## Lesson 6: [Topic Name]
+## Lesson 6: Working with Facts
 **Objectives:**
--
-- 
+- Facts
+- Multi-tier variables
+- Dicts and Arrays
+- Custom Facts
+- Variable Precedence
 
 **Key Concepts:**
-- 
+- The ansible_facts variable is nested and contains all the gathered information in 2nd or 3rd tier vars
+- Modern way to reference facts is with square brackets and single quotes as opposed to dots now that ansible_facts is a single variable(dictionary) as opposed to all facts being separate vars with their own dictionaries at 2nd and 3rd tiers
+
+ie:  
+```bash
+ansible_facts.date_time.date # OLD METHOD
+ansible_facts['date_time']['date'] # MODERN METHOD
+```
+
+- NOTE: YOU MAY NEED TO LIST ALL FACTS FOR A HOST AD-HOC AND THE SETUP MODULE IS USED THOUGH WATCH OUT FOR THE OLD FORMATTING(ALL FACTS ARE SEPARATE VARS THAT START WITH 'ANSIBLE')
+
+```bash
+ansible hostname -m ansible.builtin.setup
+```
 
 **Commands & Examples:**
-```bash
 
+Example for ansible_mounts
+```bash
+ansible mynode1 -m setup -a "filter=ansible_mount"
 ```
 
 **Lab 6:**
